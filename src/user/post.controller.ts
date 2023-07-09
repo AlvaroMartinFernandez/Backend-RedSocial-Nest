@@ -1,11 +1,14 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { PostService } from './post.service';
-
-export interface Post {
-  userId: number;
+export interface Data {
+  userid: number;
   id: number;
   title: string;
   body: string;
+}
+export interface Post {
+  statusCode: number;
+  data: Data[];
 }
 import { ApiTags, ApiResponse } from '@nestjs/swagger';
 
