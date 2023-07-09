@@ -62,7 +62,9 @@ export class UserService {
     if (!user) {
       throw new NotFoundException(`User with id ${id} not found`);
     }
+    console.log(user);
     updateUserDto.updatedAt = new Date();
+    console.log(updateUserDto);
     const data = await this.userModel.update(updateUserDto, { where: { id } });
     return data;
   }
