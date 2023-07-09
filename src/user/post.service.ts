@@ -5,7 +5,13 @@ export class PostService {
   async findOne(id: number): Promise<{ statusCode: number; data: Post[] }> {
     try {
       const response: Response = await fetch(
-        `https://jsonplaceholder.typicode.com/posts?userId=${id}`,
+        `http://jsonplaceholder.typicode.com/posts?userId=${id}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
       );
       if (!response.ok) {
         if (response.status === 404) {
