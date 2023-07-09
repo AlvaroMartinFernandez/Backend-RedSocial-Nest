@@ -98,14 +98,14 @@ describe('UserService', () => {
     });
   });
   it('should update a user', async () => {
-    const date=new Date();
+
     expect(
-      await service.update(1, {name:'testupdate',updatedAt: date}),
+      await service.update(1, {name:'testupdate'}),
     ).
     toEqual({
       id: {
         name: "testupdate",
-        updatedAt: date,
+        updatedAt: expect.any(Date),
       },
       where: {
         id: 1,

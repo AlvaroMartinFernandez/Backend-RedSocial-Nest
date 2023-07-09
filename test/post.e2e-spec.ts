@@ -4,6 +4,7 @@ import * as request from 'supertest';
 import { UserModuleMock } from './user.module.mock';
 import { PostService } from '../src/user/post.service';
 import { PostController } from '../src/user/post.controller';
+import { HttpService, HttpModule } from '@nestjs/axios';
 
 describe('PostController (e2e)', () => {
   let app: INestApplication;
@@ -23,7 +24,7 @@ describe('PostController (e2e)', () => {
 
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [UserModuleMock],
+      imports: [UserModuleMock, HttpModule],
       controllers: [PostController],
       providers: [
         {
