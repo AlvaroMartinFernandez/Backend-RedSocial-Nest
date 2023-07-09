@@ -8,9 +8,12 @@ import { User } from '../models/user.model';
 import { Friend } from '../models/friend.model';
 import { Pet } from '../models/pet.model';
 import { DataUser } from './entities/data-user.entity';
-
+import { HttpModule } from '@nestjs/axios';
 @Module({
-  imports: [SequelizeModule.forFeature([User, Friend, Pet, DataUser])],
+  imports: [
+    HttpModule,
+    SequelizeModule.forFeature([User, Friend, Pet, DataUser]),
+  ],
   controllers: [UserController, PostController],
   providers: [UserService, PostService],
 })
