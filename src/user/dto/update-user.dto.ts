@@ -41,6 +41,11 @@ export class UpdateUserDto extends PartialType(CreateUserDto) {
   @IsString()
   @Length(40, 200)
   description?: string;
+  @ApiProperty({
+    description: 'Fecha de actualizacion de usuario',
+    required: false,
+    default: new Date(),
+  })
   @IsDate()
-  updatedAt: Date;
+  updatedAt?: Date;
 }
