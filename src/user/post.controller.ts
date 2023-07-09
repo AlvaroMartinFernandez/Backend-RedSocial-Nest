@@ -25,7 +25,7 @@ export class PostController {
   @ApiResponse({ status: 404, description: 'Record not found.' })
   async findOne(
     @Param('id') id: string,
-  ): Promise<{ statusCode: number; data: Post[] }> {
+  ): Promise<{ statusCode: number; data: Data[] }> {
     return this.postService.findOne(+id);
   }
 }
