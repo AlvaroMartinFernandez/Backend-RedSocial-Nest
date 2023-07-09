@@ -9,7 +9,8 @@ export class PostService {
       console.log('Ejecutamos el servicio');
       return data;
     } catch (e: any) {
-      console.log('ejecutamos el catch');
+      console.log(e);
+      console.log('Error en el servicio');
       return e;
     }
   }
