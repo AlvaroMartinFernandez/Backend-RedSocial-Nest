@@ -1,22 +1,25 @@
 import { Injectable } from '@nestjs/common';
-import { HttpService } from '@nestjs/axios';
-import { AxiosResponse } from 'axios';
 import { Post, Data } from './post.controller';
 @Injectable()
 export class PostService {
-  constructor(private readonly httpService: HttpService) {}
   async findOne(id: number): Promise<{ statusCode: number; data: Data[] }> {
     try {
-      const response: AxiosResponse = await this.httpService
-        .get(`${process.env.POSTAPI}${id}`)
-        .toPromise();
-      const data: any = await response.data;
-      console.log('Ejecutamos el servicio');
+      const response: Response = await fetch(`${process.env.POSTAPI}${id}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      if (!response.ok) {
+        if (response.status === 404) {
+          return { statusCode: response.status, data: [] };
+        }
+        throw new Error('Error fetching');
+      }
+      const data: Post = await response.json();
       return data;
     } catch (e: any) {
-      console.log(e);
-      console.log('Error en el servicio');
-      return e;
+      return { statusCode: 500, data: [] };
     }
   }
 }

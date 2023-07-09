@@ -1,5 +1,6 @@
 import {
   Column,
+  DataType,
   Model,
   Table,
   CreatedAt,
@@ -37,13 +38,13 @@ export class User extends Model<User> {
 
   @CreatedAt
   @Column({
-    allowNull: false,
+    allowNull: true,
   })
   createdAt: Date;
 
   @UpdatedAt
   @Column({
-    allowNull: false,
+    allowNull: true,
   })
   updatedAt: Date;
 }

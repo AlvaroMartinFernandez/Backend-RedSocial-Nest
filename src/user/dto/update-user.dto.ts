@@ -1,17 +1,26 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { CreateUserDto } from './create-user.dto';
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsDate, IsUrl, Length, Matches } from 'class-validator';
+import {
+  IsOptional,
+  IsString,
+  IsDate,
+  IsUrl,
+  Length,
+  Matches,
+} from 'class-validator';
+import { Is } from 'sequelize-typescript';
 // export class UpdateUserDto extends PartialType(CreateUserDto) {
 //   updatedAt: Date;
 // }
 // NO  FUNCIONA EN EL SWAGGER SI ES UNA EXTENSION DE UNA CLASE ABRIR ISSUE
-export class UpdateUserDto extends PartialType(CreateUserDto) {
+export class UpdateUserDto {
   @ApiProperty({
     description: 'Nombre de Usuario',
     minimum: 1,
     required: false,
   })
+  @IsOptional()
   @IsString()
   @Length(1, 15)
   name?: string;
@@ -21,6 +30,7 @@ export class UpdateUserDto extends PartialType(CreateUserDto) {
     maximum: 15,
     required: false,
   })
+  @IsOptional()
   @IsString()
   @Length(6, 15)
   @Matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/)
@@ -30,6 +40,7 @@ export class UpdateUserDto extends PartialType(CreateUserDto) {
     required: false,
     default: `https://xsgames.co/randomusers/avatar.php?g=male`,
   })
+  @IsOptional()
   @IsUrl()
   @Length(1, 200)
   photourl?: string;
@@ -38,6 +49,7 @@ export class UpdateUserDto extends PartialType(CreateUserDto) {
     minimum: 40,
     required: false,
   })
+  @IsOptional()
   @IsString()
   @Length(40, 200)
   description?: string;
@@ -46,6 +58,7 @@ export class UpdateUserDto extends PartialType(CreateUserDto) {
     required: false,
     default: new Date(),
   })
+  @IsOptional()
   @IsDate()
   updatedAt?: Date;
 }
