@@ -4,15 +4,12 @@ import { Post } from './post.controller';
 export class PostService {
   async findOne(id: number): Promise<{ statusCode: number; data: Post[] }> {
     try {
-      const response: Response = await fetch(
-        `http://jsonplaceholder.typicode.com/posts?userId=${id}`,
-        {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
+      const response: Response = await fetch(`${process.env.POSTAPI}${id}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
         },
-      );
+      });
       if (!response.ok) {
         if (response.status === 404) {
           return { statusCode: response.status, data: [] };
