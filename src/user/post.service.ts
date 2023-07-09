@@ -6,8 +6,10 @@ export class PostService {
     try {
       const response: Response = await fetch(`${process.env.POSTAPI}${id}`);
       const data: Post = await response.json();
+      console.log('Ejecutamos el servicio');
       return data;
     } catch (e: any) {
+      console.log('ejecutamos el catch');
       return e;
     }
   }
