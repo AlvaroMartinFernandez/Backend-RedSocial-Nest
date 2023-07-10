@@ -56,7 +56,7 @@ $ npm install @nestjs/swagger
 $ "/api"
 
 ```
-![Swagger](https://github.com/AlvaroMartinFernandez/Backend-RedSocial-Nest/assets/91843474/4205c550-5a71-4135-bce0-5b1a970d7e30)
+![Swagger](https://github.com/AlvaroMartinFernandez/Backend-RedSocial-Nest/assets/91843474/bde44168-0d2e-414f-a44e-1c0448c77521)
 
 Utilizacion de Sequalize para conectar con la Base de datos que hemos creado
 
@@ -88,6 +88,12 @@ Hemos creado la carpeta models donde estaran los modelos de nuestra base de dato
 
 Para finalizar tenemos la carpeta DB donde tendremos el archivo de configuracion de nuestra base de datos.
 
+# Despliegue
+El proyecto esta deplegado en la siguie nte url.
+
+```bash
+https://backend-redsocial-nest-production.up.railway.app/
+```
 
 
 
